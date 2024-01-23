@@ -17,6 +17,63 @@ Dopo aggiungete Bootstrap e mostrate le informazioni con una tabella. -->
 <body>
 <div class="container">
     <h2 style="text-align:center">TABELLA HOTEL</h2>
+    <!-- filtro del pacheggio  -->
+    <form method="GET" action="index.php">
+        <label for="filterParking">Mostra solo hotel con parcheggio:</label>
+        <input type="checkbox" id="filterParking" name="filterParking" value="1">
+        <button type="submit">Filtra</button>
+    </form>
+    <?php
+$hotels = [
+
+    [
+        'name' => 'Hotel Belvedere',
+        'description' => 'Hotel Belvedere Descrizione',
+        'parking' => true,
+        'vote' => 4,
+        'distance_to_center' => 10.4
+    ],
+    [
+        'name' => 'Hotel Futuro',
+        'description' => 'Hotel Futuro Descrizione',
+        'parking' => true,
+        'vote' => 2,
+        'distance_to_center' => 2
+    ],
+    [
+        'name' => 'Hotel Rivamare',
+        'description' => 'Hotel Rivamare Descrizione',
+        'parking' => false,
+        'vote' => 1,
+        'distance_to_center' => 1
+    ],
+    [
+        'name' => 'Hotel Bellavista',
+        'description' => 'Hotel Bellavista Descrizione',
+        'parking' => false,
+        'vote' => 5,
+        'distance_to_center' => 5.5
+    ],
+    [
+        'name' => 'Hotel Milano',
+        'description' => 'Hotel Milano Descrizione',
+        'parking' => true,
+        'vote' => 2,
+        'distance_to_center' => 50
+    ],
+
+];
+if (isset($_GET['filterParking'])){
+    $filteredHotels = array_filter($hotels, function ($hotel){
+        return $hotel['parking'];
+    });
+}else{
+    $filteredHotels = $hotels;
+}
+?>
+  
+
+
     <table class=" table table-striped" >
         <thead>
             <tr>
@@ -28,80 +85,66 @@ Dopo aggiungete Bootstrap e mostrate le informazioni con una tabella. -->
             </tr>
         </thead>
         <tbody>
-        <?php
-    $hotels = [
+            <?php
+                $hotels = [
 
-        [
-            'name' => 'Hotel Belvedere',
-            'description' => 'Hotel Belvedere Descrizione',
-            'parking' => true,
-            'vote' => 4,
-            'distance_to_center' => 10.4
-        ],
-        [
-            'name' => 'Hotel Futuro',
-            'description' => 'Hotel Futuro Descrizione',
-            'parking' => true,
-            'vote' => 2,
-            'distance_to_center' => 2
-        ],
-        [
-            'name' => 'Hotel Rivamare',
-            'description' => 'Hotel Rivamare Descrizione',
-            'parking' => false,
-            'vote' => 1,
-            'distance_to_center' => 1
-        ],
-        [
-            'name' => 'Hotel Bellavista',
-            'description' => 'Hotel Bellavista Descrizione',
-            'parking' => false,
-            'vote' => 5,
-            'distance_to_center' => 5.5
-        ],
-        [
-            'name' => 'Hotel Milano',
-            'description' => 'Hotel Milano Descrizione',
-            'parking' => true,
-            'vote' => 2,
-            'distance_to_center' => 50
-        ],
+                    [
+                        'name' => 'Hotel Belvedere',
+                        'description' => 'Hotel Belvedere Descrizione',
+                        'parking' => true,
+                        'vote' => 4,
+                        'distance_to_center' => 10.4
+                    ],
+                    [
+                        'name' => 'Hotel Futuro',
+                        'description' => 'Hotel Futuro Descrizione',
+                        'parking' => true,
+                        'vote' => 2,
+                        'distance_to_center' => 2
+                    ],
+                    [
+                        'name' => 'Hotel Rivamare',
+                        'description' => 'Hotel Rivamare Descrizione',
+                        'parking' => false,
+                        'vote' => 1,
+                        'distance_to_center' => 1
+                    ],
+                    [
+                        'name' => 'Hotel Bellavista',
+                        'description' => 'Hotel Bellavista Descrizione',
+                        'parking' => false,
+                        'vote' => 5,
+                        'distance_to_center' => 5.5
+                    ],
+                    [
+                        'name' => 'Hotel Milano',
+                        'description' => 'Hotel Milano Descrizione',
+                        'parking' => true,
+                        'vote' => 2,
+                        'distance_to_center' => 50
+                    ],
 
-    ];
-    // adesso scrivo tramite echo le righe nel corpo della tabella 
-    foreach ( $hotels as $hotel){
-        echo "<tr>";
-        echo "<td>" . $hotel["name"] . "</td>";
-        echo "<td>" . $hotel["description"] . "</td>";
-        echo "<td>";
-        if($hotel["parking"]){
-            echo "Si";
-        }else{
-            echo "No";
-        }
-        echo "</td>";
-        echo "<td>" . $hotel["vote"] . "</td>";
-        echo "<td>" . $hotel["distance_to_center"] . "Km </td>";
+                ];
+                // adesso scrivo tramite echo le righe nel corpo della tabella 
+                foreach ( $hotels as $hotel){
+                    echo "<tr>";
+                    echo "<td>" . $hotel["name"] . "</td>";
+                    echo "<td>" . $hotel["description"] . "</td>";
+                    echo "<td>";
+                    if($hotel["parking"]){
+                        echo "Si";
+                    }else{
+                        echo "No";
+                    }
+                    echo "</td>";
+                    echo "<td>" . $hotel["vote"] . "</td>";
+                    echo "<td>" . $hotel["distance_to_center"] . "Km </td>";
 
-        echo "</tr>";
+                    echo "</tr>";
 
-    }
-// [
+                }
 
-        // stampo tutto a schermo 
-        // foreach($hotels as $hotel){
-        //     $name = $hotel["name"];
-        //     $description = $hotel["description"];
-        //     $parking = $hotel["parking"];
-        //     $vote = $hotel["vote"];
-        //     $distance_to_center = $hotel["distance_to_center"];
-
-            // echo che stampa tutti i dati in lista 
-
-            // echo "Nome Hotel :" . $name . "<br>" . "Descrizione :" . $description . "<br>" . "Parcheggio" . $parking . "<br>" . "voto : " . $vote . "<br>" . "distanza dal centro :" . $distance_to_center; 
-        // }
-    // ]
-?>
+            ?>
         </tbody>
     </table>
 </div>
