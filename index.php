@@ -85,66 +85,24 @@ if (isset($_GET['filterParking'])){
             </tr>
         </thead>
         <tbody>
-            <?php
-                $hotels = [
+            <?php foreach($filteredHotels as $hotel) { ?>
+                <tr>
+                    <td><?= $hotel["name"] ?></td>
+                    <td><?= $hotel["description"] ?></td>
+                    <td>
+                        <?php
+                        if($hotel["parking"]){
+                            echo "Si";
+                        }else{
+                            echo "No";
+                        }
+                        ?>
+                    </td>
+                    <td><?= $hotel["vote"] ?></td>
+                    <td><?= $hotel["distance_to_center"] ?> Km</td>
+                </tr>
+            <?php } ?>
 
-                    [
-                        'name' => 'Hotel Belvedere',
-                        'description' => 'Hotel Belvedere Descrizione',
-                        'parking' => true,
-                        'vote' => 4,
-                        'distance_to_center' => 10.4
-                    ],
-                    [
-                        'name' => 'Hotel Futuro',
-                        'description' => 'Hotel Futuro Descrizione',
-                        'parking' => true,
-                        'vote' => 2,
-                        'distance_to_center' => 2
-                    ],
-                    [
-                        'name' => 'Hotel Rivamare',
-                        'description' => 'Hotel Rivamare Descrizione',
-                        'parking' => false,
-                        'vote' => 1,
-                        'distance_to_center' => 1
-                    ],
-                    [
-                        'name' => 'Hotel Bellavista',
-                        'description' => 'Hotel Bellavista Descrizione',
-                        'parking' => false,
-                        'vote' => 5,
-                        'distance_to_center' => 5.5
-                    ],
-                    [
-                        'name' => 'Hotel Milano',
-                        'description' => 'Hotel Milano Descrizione',
-                        'parking' => true,
-                        'vote' => 2,
-                        'distance_to_center' => 50
-                    ],
-
-                ];
-                // adesso scrivo tramite echo le righe nel corpo della tabella 
-                foreach ( $hotels as $hotel){
-                    echo "<tr>";
-                    echo "<td>" . $hotel["name"] . "</td>";
-                    echo "<td>" . $hotel["description"] . "</td>";
-                    echo "<td>";
-                    if($hotel["parking"]){
-                        echo "Si";
-                    }else{
-                        echo "No";
-                    }
-                    echo "</td>";
-                    echo "<td>" . $hotel["vote"] . "</td>";
-                    echo "<td>" . $hotel["distance_to_center"] . "Km </td>";
-
-                    echo "</tr>";
-
-                }
-
-            ?>
         </tbody>
     </table>
 </div>
