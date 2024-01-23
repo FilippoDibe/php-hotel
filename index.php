@@ -11,13 +11,13 @@ Dopo aggiungete Bootstrap e mostrate le informazioni con una tabella. -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="import" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css.html">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <title>Document</title>
 </head>
 <body>
 <div class="container">
     <h2 style="text-align:center">TABELLA HOTEL</h2>
-    <table class=" table table-striped">
+    <table class=" table table-striped" >
         <thead>
             <tr>
                 <th>Nome</th>
@@ -71,7 +71,17 @@ Dopo aggiungete Bootstrap e mostrate le informazioni con una tabella. -->
     // adesso scrivo tramite echo le righe nel corpo della tabella 
     foreach ( $hotels as $hotel){
         echo "<tr>";
-
+        echo "<td>" . $hotel["name"] . "</td>";
+        echo "<td>" . $hotel["description"] . "</td>";
+        echo "<td>";
+        if($hotel["parking"]){
+            echo "Si";
+        }else{
+            echo "No";
+        }
+        echo "</td>";
+        echo "<td>" . $hotel["vote"] . "</td>";
+        echo "<td>" . $hotel["distance_to_center"] . "Km </td>";
 
         echo "</tr>";
 
