@@ -5,60 +5,7 @@ Iniziate in modo graduale.
 Prima stampate in pagina i dati, senza preoccuparvi dello stile.
 Dopo aggiungete Bootstrap e mostrate le informazioni con una tabella. -->
 
-<?php
-$hotels = [
 
-	[
-		'name' => 'Hotel Belvedere',
-		'description' => 'Hotel Belvedere Descrizione',
-		'parking' => true,
-		'vote' => 4,
-		'distance_to_center' => 10.4
-	],
-	[
-		'name' => 'Hotel Futuro',
-		'description' => 'Hotel Futuro Descrizione',
-		'parking' => true,
-		'vote' => 2,
-		'distance_to_center' => 2
-	],
-	[
-		'name' => 'Hotel Rivamare',
-		'description' => 'Hotel Rivamare Descrizione',
-		'parking' => false,
-		'vote' => 1,
-		'distance_to_center' => 1
-	],
-	[
-		'name' => 'Hotel Bellavista',
-		'description' => 'Hotel Bellavista Descrizione',
-		'parking' => false,
-		'vote' => 5,
-		'distance_to_center' => 5.5
-	],
-	[
-		'name' => 'Hotel Milano',
-		'description' => 'Hotel Milano Descrizione',
-		'parking' => true,
-		'vote' => 2,
-		'distance_to_center' => 50
-	],
-
-];
-
-// stampo tutto a schermo 
-foreach($hotels as $hotel){
-    $name = $hotel["name"];
-    $description = $hotel["description"];
-    $parking = $hotel["parking"];
-    $vote = $hotel["vote"];
-    $distance_to_center = $hotel["distance_to_center"];
-
-    // echo che stampa tutti i dati in lista 
-
-    // echo "Nome Hotel :" . $name . "<br>" . "Descrizione :" . $description . "<br>" . "Parcheggio" . $parking . "<br>" . "voto : " . $vote . "<br>" . "distanza dal centro :" . $distance_to_center; 
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,35 +15,86 @@ foreach($hotels as $hotel){
     <title>Document</title>
 </head>
 <body>
-<table class="table table-striped">
-<thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+    <h2 style="text-align:center">TABELLA HOTEL</h2>
+    <table class=" table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrizone</th>
+                <th>Parcheggio</th>
+                <th>Voto</th>
+                <th>Distanza dal centro</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+    $hotels = [
+
+        [
+            'name' => 'Hotel Belvedere',
+            'description' => 'Hotel Belvedere Descrizione',
+            'parking' => true,
+            'vote' => 4,
+            'distance_to_center' => 10.4
+        ],
+        [
+            'name' => 'Hotel Futuro',
+            'description' => 'Hotel Futuro Descrizione',
+            'parking' => true,
+            'vote' => 2,
+            'distance_to_center' => 2
+        ],
+        [
+            'name' => 'Hotel Rivamare',
+            'description' => 'Hotel Rivamare Descrizione',
+            'parking' => false,
+            'vote' => 1,
+            'distance_to_center' => 1
+        ],
+        [
+            'name' => 'Hotel Bellavista',
+            'description' => 'Hotel Bellavista Descrizione',
+            'parking' => false,
+            'vote' => 5,
+            'distance_to_center' => 5.5
+        ],
+        [
+            'name' => 'Hotel Milano',
+            'description' => 'Hotel Milano Descrizione',
+            'parking' => true,
+            'vote' => 2,
+            'distance_to_center' => 50
+        ],
+
+    ];
+    // adesso scrivo tramite echo le righe nel corpo della tabella 
+    foreach ( $hotels as $hotel){
+        echo "<tr>";
+
+
+        echo "</tr>";
+
+    }
+// [
+
+        // stampo tutto a schermo 
+        // foreach($hotels as $hotel){
+        //     $name = $hotel["name"];
+        //     $description = $hotel["description"];
+        //     $parking = $hotel["parking"];
+        //     $vote = $hotel["vote"];
+        //     $distance_to_center = $hotel["distance_to_center"];
+
+            // echo che stampa tutti i dati in lista 
+
+            // echo "Nome Hotel :" . $name . "<br>" . "Descrizione :" . $description . "<br>" . "Parcheggio" . $parking . "<br>" . "voto : " . $vote . "<br>" . "distanza dal centro :" . $distance_to_center; 
+        // }
+    // ]
+?>
+        </tbody>
+    </table>
+</div>
     
 </body>
 </html>
