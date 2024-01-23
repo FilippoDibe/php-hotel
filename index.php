@@ -21,6 +21,10 @@ Dopo aggiungete Bootstrap e mostrate le informazioni con una tabella. -->
     <form method="GET" action="index.php">
         <label for="filterParking">Mostra solo hotel con parcheggio:</label>
         <input type="checkbox" id="filterParking" name="filterParking" value="1">
+        
+        <label for="filterRating">Filtra per Voto (3 o superiore):</label>
+        <input type="number" id="filterRating" name="filterRating" min="1" max="5">
+        
         <button type="submit">Filtra</button>
     </form>
     <?php
@@ -69,6 +73,14 @@ if (isset($_GET['filterParking'])){
     });
 }else{
     $filteredHotels = $hotels;
+}
+
+// gestione filtro voto 
+if (isset($_GET['filterRating'])){
+    $ratingFilter = intval($_GET['filterRating']);
+    $filteredHotels = array_filter($filteredHotels, function ($hotel) use ($ratingFilter){
+        return $hotel['vote'] >= $ratingFilter;
+    });
 }
 ?>
   
